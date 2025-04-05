@@ -2613,52 +2613,75 @@
 //	cout << ret << endl;
 //	return 0;
 //}
+//
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 110;
+//int n;
+//int a[N];
+//int f[N];// 从左往右填表 
+//int g[N];// 从右往左填表 
+//
+//int main() {
+//	cin >> n;
+//	for(int i = 1; i <= n; i++) cin >> a[i];
+//	// 找到数组中最大的值对应的下标 
+//	int m = 1;
+//	for(int i = 2; i <= n; i++) {
+//		if(a[m] < a[i]) {
+//			m = i;
+//		}
+//	} 
+//	
+//	int ret1 = 0;
+//	// 从左往右填表 
+//	for(int i = 1; i <= m; i++) {// 开始遍历数组每一个元素 
+//		f[i] = 1;
+//		for(int j = 1; j < i; j++) {
+//			if(a[j] < a[i]) {
+//				f[i] = max(f[i], f[j] + 1);
+//			}
+//		}
+//		ret1 = max(ret1,f[i]);
+//	}
+//	
+//	
+//	int ret2 = 0;
+//	// 从右往左填表
+//	for(int i = n; i >= m; i--) {
+//		g[i] = 1;
+//		for(int j = n; j > i; j--) {
+//			if(a[j] < a[i]) {
+//				g[i] = max(g[i], g[j] + 1);
+//			}
+//		}
+//		ret2 = max(ret2,g[i]);
+//	} 
+//	
+//	cout << ret1 + ret2 - 1 << endl;
+//	return 0;
+//}
 
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 110;
-int n;
+const int N = 1e7 + 10;
+
+int k;
+int ret;
 int a[N];
-int f[N];// 从左往右填表 
-int g[N];// 从右往左填表 
 
 int main() {
-	cin >> n;
-	for(int i = 1; i <= n; i++) cin >> a[i];
-	// 找到数组中最大的值对应的下标 
-	int m = 1;
-	for(int i = 2; i <= n; i++) {
-		if(a[m] < a[i]) {
-			m = i;
+	cin >> k;
+	int index = 1;
+	a[1] = 1;
+	for(int i = 2; i <= k; i++) {
+		for(int j = 1; j <= i; j++) {
+			index++;
+			a[index] = a[index - 1]  + i;
 		}
-	} 
-	
-	int ret1 = 0;
-	// 从左往右填表 
-	for(int i = 1; i <= m; i++) {// 开始遍历数组每一个元素 
-		f[i] = 1;
-		for(int j = 1; j < i; j++) {
-			if(a[j] < a[i]) {
-				f[i] = max(f[i], f[j] + 1);
-			}
-		}
-		ret1 = max(ret1,f[i]);
 	}
-	
-	
-	int ret2 = 0;
-	// 从右往左填表
-	for(int i = n; i >= m; i--) {
-		g[i] = 1;
-		for(int j = n; j > i; j--) {
-			if(a[j] < a[i]) {
-				g[i] = max(g[i], g[j] + 1);
-			}
-		}
-		ret2 = max(ret2,g[i]);
-	} 
-	
-	cout << ret1 + ret2 - 1 << endl;
+	cout << a[k] << endl;
 	return 0;
-}
+} 
