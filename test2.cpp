@@ -2663,25 +2663,233 @@
 //	return 0;
 //}
 
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 1e7 + 10;
+//
+//int k;
+//int ret;
+//int a[N];
+//
+//int main() {
+//	cin >> k;
+//	int index = 1;
+//	a[1] = 1;
+//	for(int i = 2; i <= k; i++) {
+//		for(int j = 1; j <= i; j++) {
+//			index++;
+//			a[index] = a[index - 1]  + i;
+//		}
+//	}
+//	cout << a[k] << endl;
+//	return 0;
+//} 
+
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int main() {
+//	int k; cin >> k;
+//	int ret = 0, tmp = 1,cnt = 1;
+//	for(int i = 1; i <= k; i++) {
+//		ret += tmp;
+//		cnt--;
+//		if(cnt == 0) {
+//			tmp++;
+//			cnt = tmp;
+//		}
+//	}
+//	cout << ret << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int n,m;
+//
+//int main() {
+//	cin >> n >> m;
+//	priority_queue<int,vector<int>,greater<int>> heap; // 小根堆
+//	for(int i = 1; i <= m; i++) {// 先把所以水龙头的结束时间设置为0 
+//		heap.push(0);
+//	} 
+//	
+//	// 选择堆顶（最早结束时间的水龙头），然后选择最长结束时间的水龙头作为ret 
+//	int ret = 0;
+//	for(int i = 1; i <= n; i++) {
+//		int x; cin >> x;
+//		int t = heap.top();heap.pop();
+//		t += x;
+//		heap.push(t);
+//		ret = max(ret, t);
+//	}
+//	cout << ret << endl;
+//	return 0;
+//} 
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 5e5 + 10;
+//
+//typedef long long LL;
+//
+//int n;
+//int a[N],tmp[N];
+//
+//
+//// 用归并排序求逆序对的个数 
+//LL merge_sort(int l,int r) {
+//	if(l >= r) {
+//		return 0;
+//	}
+//	LL ret = 0;
+//	int mid = (l + r) / 2;
+//	ret += merge_sort(l,mid);
+//	ret += merge_sort(mid + 1,r);
+//	
+//	// 归并排序核心
+//	int cur1 = l, cur2 = mid + 1,i = l;
+//	while(cur1 <= mid && cur2 <= r) {
+//		if(a[cur1] <= a[cur2]) {// 此时没有逆序对 
+//			tmp[i++] = a[cur1++];
+//		}
+//		else {
+//			ret += mid - cur1 + 1;// 有逆序对 
+//			tmp[i++] = a[cur2++];
+//		}
+//	} 
+//	while(cur1 <= mid) tmp[i++] = a[cur1++];
+//	while(cur2 <= r) tmp[i++] = a[cur2++];
+//	for(int j = l; j <= r; j++) a[j] = tmp[j];
+//	
+//	return ret;
+//}
+//
+//int main() {
+//	cin >> n;
+//	for(int i= 1; i <= n; i++) cin >> a[i];
+//	cout << merge_sort(1,n) << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 1010;
+//int n,m;
+//
+//int v[N],w[N];
+//int f[N][N];
+//
+//int main() {
+//	cin >> n >> m;
+//	for(int i = 1; i <= n; i++) cin >> v[i] >> w[i];
+//	
+//	// 最大价值 
+//	// 动态规划
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 0; j <= m; j++) {
+//			f[i][j] = f[i - 1][j];
+//			if(j >= v[i]) {
+//				f[i][j] = max(f[i][j], f[i - 1][j - v[i]] + w[i]);// 左边表示不选，右边表示选 
+//			}
+//		}
+//	}
+//	cout << f[n][m] << endl;
+//	
+//	// 刚好装满
+//	// 初始化
+//	memset(f,-0x3f,sizeof f);
+//	f[0][0] = 0;
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 0; j <= m; j++) {
+//			f[i][j] = f[i - 1][j];
+//			if(j >= v[i]) {
+//				f[i][j] = max(f[i][j], f[i - 1][j - v[i]] + w[i]);// 左边表示不选，右边表示选 
+//			}
+//		}
+//	} 
+//	if(f[n][m] < 0) cout << 0 << endl;
+//	else cout << f[n][m] << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 1010;
+//
+//int T,M;
+//int t[N],w[N];
+//int f[N][N];
+//
+//int main() {
+//	cin >> T >> M;
+//	for(int i = 1; i <= M; i++) cin >> t[i] >> w[i];
+//	
+//	// 动态规划
+//	for(int i = 1; i <= M; i++) {
+//		for(int j = 0; j <= T; j++) {
+//			f[i][j] = f[i - 1][j];
+//			if(j >= t[i]) {
+//				f[i][j] = max(f[i][j], f[i - 1][j - t[i]] + w[i]);
+//			}
+//		}
+//	} 
+//	cout << f[M][T] << endl;
+//	return 0;
+//}
+//
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 110,M = 10010;
+//
+//int n,m;
+//int a[M];
+//int f[N][N];
+//
+//int main() {
+//	cin >> n >> m;
+//	for(int i = 1; i <= n; i++) cin >> a[i];
+//	
+//	// 初始化
+//	f[0][0] = 1;
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 0; j <= m; j++) {
+//			f[i][j] = f[i - 1][j]; 
+//			if(j >= a[i]) f[i][j] += f[i - 1][j - a[i]];// 方案数是累加
+//		}
+//	} 
+//	cout << f[n][m] << endl;
+//	return 0;
+//}
+
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 1e7 + 10;
+const int N = 2010,M = 1010,MOD = 1e8;
 
-int k;
-int ret;
+int n,m;
 int a[N];
+int f[N][M];
 
 int main() {
-	cin >> k;
-	int index = 1;
-	a[1] = 1;
-	for(int i = 2; i <= k; i++) {
-		for(int j = 1; j <= i; j++) {
-			index++;
-			a[index] = a[index - 1]  + i;
+	cin >> n >> m;
+	for(int i = 1; i <= n; i++) cin >> a[i];
+	
+	// 动态规划
+	// f[i][j]表示1~i中挑选之后能力值是m的倍数的方案数 
+	f[0][0] = 1;
+	for(int i = 1; i <= n; i++) {
+		for(int j = 0; j < m; j++) {
+			f[i][j] = (f[i - 1][j] + f[i -1][((j - a[i] % m) % m + m) % m]) % MOD;
 		}
-	}
-	cout << a[k] << endl;
+	} 
+	cout << f[n][0] << endl;
 	return 0;
-} 
+}
