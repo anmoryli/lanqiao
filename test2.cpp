@@ -2869,27 +2869,189 @@
 //	return 0;
 //}
 
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 2010,M = 1010,MOD = 1e8;
+//
+//int n,m;
+//int a[N];
+//int f[N][M];
+//
+//int main() {
+//	cin >> n >> m;
+//	for(int i = 1; i <= n; i++) cin >> a[i];
+//	
+//	// 动态规划
+//	// f[i][j]表示1~i中挑选之后能力值是m的倍数的方案数 
+//	f[0][0] = 1;
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 0; j < m; j++) {
+//			f[i][j] = (f[i - 1][j] + f[i -1][((j - a[i] % m) % m + m) % m]) % MOD;
+//		}
+//	} 
+//	cout << f[n][0] - 1 << endl;
+//	return 0;
+//}
+
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 1010;
+//
+//int n,m;
+//int v[N],w[N];
+//int f[N][N];
+//
+//int main() {
+//	cin >> n >> m;
+//	for(int i = 1; i <= n; i++) cin >> v[i] >> w[i];
+//	
+//	// 动态规划
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 0; j <= m; j++) {
+//			f[i][j] = f[i - 1][j];
+//			if(j >= v[i]) {
+//				f[i][j] = max(f[i][j], f[i][j - v[i]] + w[i]);// 优化状态转移方程 
+//			}
+//		}
+//	}
+//	cout << f[n][m] << endl;
+//	
+//	// 正好装满
+//	memset(f, -0x3f, sizeof f);
+//	f[0][0] = 0;
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 0; j <= m; j++) {
+//			f[i][j] = f[i - 1][j];
+//			if(j >= v[i]) {
+//				f[i][j] = max(f[i][j], f[i][j - v[i]] + w[i]);// 优化状态转移方程 
+//			}
+//		}
+//	}
+//	if(f[n][m] <= 0) cout << 0 << endl;
+//	else cout << f[n][m] << endl;
+//	return 0;
+//} 
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//typedef 
+//
+//const int N = 1e4 + 10;
+//
+//int n,m;
+//int t[N],w[N];
+//int f[N][N];
+//
+//int main() {
+//	cin >> n >> m;
+//	for(int i = 1; i <= m; i++) cin >> t[i] >> w[i];
+//	
+//	// 动态规划
+//	for(int i = 1; i <= m; i++) {
+//		for(int j = 0; j <= n; j++) {
+//			f[i][j] = f[i - 1][j];
+//			if(j >= t[i]) f[i][j] = max(f[i][j], f[i][j - t[i]] + w[i]);
+//		} 
+//	} 
+//	cout << f[m][n] << endl;
+//	return 0;
+//} 
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//typedef long long LL;
+//
+//const int N = 1e4 + 10,M = 1e7 + 10;
+//
+//int n,m;
+//int t[N],w[N];
+//LL f[M];
+//
+//int main() {
+//	cin >> m >> n;
+//	for(int i = 1; i <= n; i++) cin >> t[i] >> w[i];
+//	
+//	// 动态规划
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = t[i]; j <= m; j++) {
+//			f[j] = max(f[j], f[j - t[i]] + w[i]);
+//		}
+//	} 
+//	cout << f[m] << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 110,M = 50010;
+//
+//int n, h;
+//int p[N],c[N];
+//int f[N][M];
+//
+//int main() {
+//	cin >> n >> h;
+//	for(int i = 1; i <= n; i++) cin >> p[i] >> c[i];
+//	
+//	memset(f, 0x3f, sizeof f);
+//	f[0][0] = 0;
+//	// 动态规划
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 0; j <= h; j++) {// 无需判断 
+//		    f[i][j] = min(f[i - 1][j], f[i][max(0, j - p[i])] + c[i]);
+//		}
+//	} 
+//	cout << f[n][h] << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 110;
+//
+//int n, m;
+//int x[N], w[N], v[N];
+//int f[N][N];
+//
+//int main() {
+//	cin >> n >> m;
+//	for(int i = 1; i <= n; i++) cin >> x[i] >> w[i] >> v[i];
+//	
+//	// 动态规划 
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = m; j > 0; j--) {
+//			for(int k = 0; k <= x[i] && k * w[i] <= j; k++) {
+//				f[i][j] = max(f[i][j], f[i - 1][j - k * w[i]] + k * v[i]);
+//			}
+//		}
+//	}
+//	cout << f[n][m] << endl;
+//	return 0;
+//}
+
 #include <bits/stdc++.h>
 using namespace std;
-
-const int N = 2010,M = 1010,MOD = 1e8;
+const int N = 110, MOD = 1e6 + 7;
 
 int n,m;
 int a[N];
-int f[N][M];
+int f[N][N];
 
 int main() {
 	cin >> n >> m;
 	for(int i = 1; i <= n; i++) cin >> a[i];
 	
-	// 动态规划
-	// f[i][j]表示1~i中挑选之后能力值是m的倍数的方案数 
 	f[0][0] = 1;
 	for(int i = 1; i <= n; i++) {
-		for(int j = 0; j < m; j++) {
-			f[i][j] = (f[i - 1][j] + f[i -1][((j - a[i] % m) % m + m) % m]) % MOD;
+		for(int j = m; j > 0; j--) {
+			for(int k = 0; k <= a[i] && k <= j; k++) {
+				f[i][j] = (f[i][j] + f[i - 1][j - k]) % MOD;
+			}
 		}
-	} 
-	cout << f[n][0] << endl;
+	}
+	 cout << f[n][m] << endl;
 	return 0;
 }
