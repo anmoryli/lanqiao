@@ -3616,37 +3616,135 @@
 //	return 0;
 //} 
 
-#include <bits/stdc++.h>
-using namespace std;
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 1e4 + 10;
+//
+//int n;
+//int c[N];// 记录第i个数被除了c[i]次 
+//
+//void deprime(int x) {
+//	for(int i = 2; i <= x / i; i++) {
+//		int cnt = 0;
+//		while(x % i == 0) 
+//		{
+//			cnt++;
+//			x /= i;
+//		}
+//		c[i] += cnt;
+//	}
+//	// 注意判断最后一个数
+//	if(x > 1) c[x]++; 
+//}
+//
+//int main() {
+//	cin >> n;
+//	for(int i = 2; i <= n; i++) {// 把数拆分成阶乘 
+//		deprime(i);
+//	}
+//	for(int i = 2; i <= n; i++) {
+//		if(c[i]) {
+//			cout << i << " " << c[i] << endl;
+//		}
+//	}
+//	return 0;
+//}
 
-const int N = 1e4 + 10;
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int n;
+//
+//int main() {
+//	cin >> n;
+//	int sum = 0;
+//	for(int i = 1; i < n / i; i++) {
+//		if(n % i == 0) {
+//			sum += i;
+//			if(i != n / i) sum += n / i;
+//		}
+//	}
+//	cout << sum << endl;
+//	return 0;
+//}
 
-int n;
-int c[N];// 记录第i个数被除了c[i]次 
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int main() {
+//	int n;
+//	long long sum = 0;
+//	cin >> n;
+//	for(int i = 1; i <= n / 2; i++) {
+//		sum += n / i;
+//	}
+//	sum += n - (n / 2);
+//	cout << sum << endl;
+//	return 0;
+//}
 
-void deprime(int x) {
-	for(int i = 2; i <= x / i; i++) {
-		int cnt = 0;
-		while(x % i == 0) 
-		{
-			cnt++;
-			x /= i;
-		}
-		c[i] += cnt;
-	}
-	// 注意判断最后一个数
-	if(c[x] > 1) c[x]++; 
-}
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 110;
+//
+//int n,m;
+//char a[N][N];
+//
+//int main() {
+//	cin >> n >> m;
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 1; j <= m; j++) {
+//			cin >> a[i][j];
+//		}
+//	}
+//	for(int i = 1; i <= n; i++) { 
+//		for(int j = 1; j <= m; j++) {
+//			if(a[i][j] == '*') cout << '*';
+//			else {
+//				int cnt = 0;
+//				for(int dx = -1; dx <= 1; dx++) {
+//					for(int dy = -1; dy <= 1; dy++) {
+//						if(!dx && !dy) continue;
+//						else {
+//							int x = i + dx, y = j + dy;
+//							if(a[x][y] == '*') cnt++;
+//						}
+//					}
+//				}
+//				cout << cnt;
+//			}
+//		}
+//		cout << endl;
+//	}
+//	return 0;
+//}
 
-int main() {
-	cin >> n;
-	for(int i = 2; i <= n; i++) {// 把数拆分成阶乘 
-		deprime(i);
-	}
-	for(int i = 2; i <= n; i++) {
-		if(c[i]) {
-			cout << i << " " << c[i] << endl;
-		}
-	}
-	return 0;
-}
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 20;
+//
+//string s;
+//int a;
+//
+//int main() {
+//	cin >> s;
+//	int sum = 0, cnt = 1;
+//	for(int i = 0; i < s.size() - 1; i++) {
+//		if(s[i] != '-') {
+//			sum += ((s[i] - '0') * cnt);
+//			cnt++;
+//		}
+//	}
+//	sum %= 11;
+//	if(sum == s[12] - '0') cout << "Right" << endl;
+//	else {
+//		for(int i = 0; i < s.size() - 1; i++) {
+//			cout << s[i];
+//		}
+//		cout << sum << endl;
+//	}
+//	return 0;
+//}
