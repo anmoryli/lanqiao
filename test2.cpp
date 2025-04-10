@@ -3567,27 +3567,86 @@
 //	return 0;
 //}
 
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//string a;
+//int b;
+//
+//int gcd(int a, int b) {
+//	return b == 0 ? a : gcd(b, a % b);
+//}
+//
+//int calc() {
+//	long long t = 0;
+//	for(auto ch : a) {
+//		t = t * 10 + (ch - '0');
+//		t %= b;
+//	}
+//	return t;
+//}
+//
+//int main() {
+//	cin >> a >> b;
+//	cout << gcd(calc(),b) << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 1e5 + 10;
+//
+//int n;
+//int a[N], b[N];
+//int f[N][N];
+//
+//int main() {
+//	cin >> n;
+//	for(int i = 1; i <= n; i++) cin >> a[i];
+//	for(int i = 1; i <= n; i++) cin >> b[i];
+//
+//	// f[i]表示[1,i]区间的最长上升子串 
+//	for(int i = 1; i <= n; i++){
+//		for(int j = 1; j <= n; j++) {
+//			f[i][j] = max(f[i - 1][j], f[i][j - 1]);
+//			if(a[i] == b[i]) f[i][j] = max(f[i][j], f[i - 1][j - 1] + 1);
+//		}
+//	}
+//	cout << f[n][n] << endl; 
+//	return 0;
+//} 
+
 #include <bits/stdc++.h>
 using namespace std;
 
-string a;
-int b;
+const int N = 1e4 + 10;
 
-int gcd(int a, int b) {
-	return b == 0 ? a : gcd(b, a % b);
-}
+int n;
+int c[N];// 记录第i个数被除了c[i]次 
 
-int calc() {
-	long long t = 0;
-	for(auto ch : a) {
-		t = t * 10 + (ch - '0');
-		t %= b;
+void deprime(int x) {
+	for(int i = 2; i <= x / i; i++) {
+		int cnt = 0;
+		while(x % i == 0) 
+		{
+			cnt++;
+			x /= i;
+		}
+		c[i] += cnt;
 	}
-	return t;
+	// 注意判断最后一个数
+	if(c[x] > 1) c[x]++; 
 }
 
 int main() {
-	cin >> a >> b;
-	cout << gcd(calc(),b) << endl;
+	cin >> n;
+	for(int i = 2; i <= n; i++) {// 把数拆分成阶乘 
+		deprime(i);
+	}
+	for(int i = 2; i <= n; i++) {
+		if(c[i]) {
+			cout << i << " " << c[i] << endl;
+		}
+	}
 	return 0;
 }
