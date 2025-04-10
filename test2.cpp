@@ -3032,26 +3032,562 @@
 //	return 0;
 //}
 
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 110, MOD = 1e6 + 7;
+//
+//int n,m;
+//int a[N];
+//int f[N];
+//
+//int main() {
+//	cin >> n >> m;
+//	for(int i = 1; i <= n; i++) cin >> a[i];
+//	
+//	f[0] = 1;
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = m; j > 0; j--) {
+//			for(int k = 1; k <= a[i] && k <= j; k++) {
+//				f[j] = (f[j] + f[j - k]) % MOD;
+//			}
+//		}
+//	}
+//	 cout << f[m] << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//typedef pair<int,int> PII;// 用于存储每一组的重量和价值 
+//const int N = 1010;
+//
+//int n,m,cnt;
+//vector<PII> g[N];// 下标表示组数
+//int f[N][N]; 
+//
+//int main() {
+//	cin >> m >> n;
+//	for(int i = 1; i <= n; i++) {
+//		int a,b,c;cin >> a >> b >> c;
+//		g[c].push_back({a,b});// 表示把第c组的重量a和价值b放进下标weic的数组中 
+//		cnt = max(c, cnt);// 记录一共有多少组 
+//	}
+//	
+//	// 动态规划
+//	for(int i = 1; i <= cnt; i++) {
+//		for(int j = m; j >= 0; j--) {
+//			f[i][j] = f[i - 1][j];
+//			// 在这一组中选择物品
+//			for(auto& t : g[i]) {
+//				int a = t.first, b = t.second;
+//				if(j >= a) f[i][j] = max(f[i][j], f[i - 1][j - a] + b);
+//			} 
+//		}
+//	} 
+//	cout << f[cnt][m] << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 110, M = 110;
+//
+//int n,m;
+//int z,j;
+//
+//int main() {
+//	cin >> n >> m;
+//	for(int x1 = 0; x1 <= n; x1++) {
+//		for(int y1 = 0; y1 <= m; y1++) {
+//			for(int x2 = x1 + 1; x2 <= n; x2++) {// 注意x2和y2的初始化位置必须在x1和y1之后！！！ 
+//				for(int y2 = y1 + 1; y2 <= m; y2++) {
+//					if(x2 - x1 == y2 - y1) z++;
+//					else j++;
+//				}
+//			}
+//		}
+//	}
+//	cout << z << " " << j << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 5010;
+//
+//int n, m;
+//int p[N], a[N];
+//int f[N][N]; 
+//
+//int main() {
+//	cin >> n >> m;
+//	for(int i = 1; i <= m; i++) cin >> p[i] >> a[i];
+//	
+//	// 动态规划
+//	// f[i][j]表示前i个奶农在满足j单位奶牛需求情况下的最小费用
+//	memset(f, 0x3f, sizeof f);
+//	f[0][0] = 0; 
+//	for(int i = 1; i <= m; i++) {
+//		for(int j = 0; j <= n; j++) {
+//			f[i][j] = f[i - 1][j];
+//			for(int k = 0; k <= a[i] && k <= j; k++) {
+//				f[i][j] = min(f[i][j], f[i - 1][j - k] + k * p[i]);
+//			}
+//		} 
+//	}
+//	cout << f[m][n] << endl;
+//	return 0;
+//}
+
+//#include <iostream>
+//#include <vector>
+//#include <climits>
+//
+//using namespace std;
+//
+//int main() {
+//    int n, m;
+//    cin >> n >> m;
+//
+//    vector<pair<int, int>> farmers(m);
+//    for (int i = 0; i < m; i++) {
+//        cin >> farmers[i].first >> farmers[i].second;
+//    }
+//
+//    // 初始化 dp 数组，dp[i][j] 表示考虑前 i 个奶农，获取 j 单位牛奶的最小花费
+//    vector<vector<int>> dp(m + 1, vector<int>(n + 1, INT_MAX));
+//    dp[0][0] = 0;
+//
+//    for (int i = 1; i <= m; i++) {
+//        int p = farmers[i - 1].first;
+//        int a = farmers[i - 1].second;
+//        for (int j = 0; j <= n; j++) {
+//            // 不选第 i 个奶农
+//            dp[i][j] = dp[i - 1][j];
+//            for (int k = 0; k <= min(a, j); k++) {
+//                // 选第 i 个奶农，取 k 单位牛奶
+//                if (dp[i - 1][j - k] != INT_MAX) {
+//                    dp[i][j] = min(dp[i][j], dp[i - 1][j - k] + k * p);
+//                }
+//            }
+//        }
+//    }
+//
+//    cout << dp[m][n] << endl;
+//
+//    return 0;
+//}    
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int M = 35, N = 30010;
+//
+//int n, m;
+//int v[M],w[M];
+//int f[M][N];
+//
+//int main() {
+//	cin >> n >> m;
+//	for(int i = 1; i <= m; i++) {
+//		cin >> v[i] >> w[i];
+//	}
+//	
+//	// 动态规划
+//	// f[i][j] 表示在前i个物品中挑选，总价值(v[i] * w[i]) 不超过j的情况下的最大值 
+//	for(int i = 1; i <= m; i++) {
+//		for(int j = 0; j <= n; j++) {
+//			f[i][j] = f[i - 1][j];
+//			if(j >= v[i]) f[i][j] = max(f[i][j], f[i - 1][j - v[i]] + v[i] * w[i]);
+//		}
+//	} 
+//	cout << f[m][n] << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 110;
+//
+//int n;
+//string s;
+//
+//int main() {
+//	cin >> n >> s;
+//	// n是奇数的时候
+//	if(n % 2) {
+//		for(int i = 0; i < n; i++) {
+//			cout << s[i];
+//			if(i % 2 && i < n - 3) cout << "-";
+//		}
+//	}
+//	else {
+//		for(int i = 0; i < n; i++) {
+//			cout << s[i];
+//			if(i % 2 && i < n - 2) cout << "-";
+//		}
+//	}
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//typedef long long LL;
+//
+//int x, y;
+//
+//int main() {
+//	cin >> x >> y;
+//	LL ret = 0;
+//	// 类似辗转相除法 
+//	while(x && y) {
+//		LL cnt = x / y;//用于统计有多少个正方形，假设x是大于y的不大于也没事，后面会交换 
+//		 ret += cnt * 4 * y;// 此时正方形的边长是y 
+//		 x %= y;// 重新计算矩形的长，之前的已经被算过了 
+//		 swap(x,y);
+//	}
+//	cout << ret << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 10010, M = 110;
+//
+//int n,m;
+//int t[N],c[N],p[N];
+//int f[M];
+//
+//int main() {
+//	int t1,t2,t3,t4; char ch;
+//	cin >> t1 >> ch >> t2 >> t3 >> ch >> t4 >> n;
+//	int m = t3 * 60 + t4 - (t1 * 60 + t2);
+//	
+//	for(int i = 1; i <= n; i++) cin >> t[i] >> c[i] >> p[i];
+//	
+//	// 混合背包动态规划
+//	// f[i][j]表示在[1,i]区间赏花，总时间不超过j的情况下获得的最大美学值 
+//	for(int i = 1; i <= n; i++) {
+//		// 分类讨论
+//		// 完全背包
+//		if(p[i] == 0) {
+//			for(int j = t[i]; j <= m; j++) {
+//				f[j] = max(f[j], f[j - t[i]] + c[i]);
+//			}
+//		} 
+//		// 01背包
+//		else if(p[i] == 1) {
+//			for(int j = m; j >= t[i]; j--) {
+//				f[j] = max(f[j], f[j - t[i]] + c[i]);
+//			}
+//		}
+//		// 多重背包
+//		else {
+//			for(int j = m; j >= t[i]; j--) {
+//				for(int k = 1; k <= p[i] && k * t[i] <= j; k++) {
+//					f[j] = max(f[j], f[j - k * t[i]] + k * c[i]);
+//				}
+//			}
+//		} 
+//	} 
+//	cout << f[m] << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 310;
+//typedef pair<int, int> PII;
+//
+//int n;
+//int c[N], m[N], e[N];
+//vector<PII> p;
+//
+//int main() {
+//	cin >> n;
+//	for(int i = 1; i <= n; i++) {
+//		cin >> c[i] >> m[i] >> e[i];
+//		p.push_back({c[i],c[i] + m[i] + e[i]});
+//	}
+//	sort()
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//struct stu{
+//	int num;// 学生编号
+//	int c,m,e;// 三门课的成绩
+//	int sum;// 成绩总分 
+//}student[310];
+//
+//bool cmp(stu& a, stu& b){
+//	if(a.sum > b.sum) return true;
+//	else if(a.sum < b.sum) return false;
+//	else {
+//		if(a.c > b.c) return true;
+//		else if(a.c < b.c) return false;
+//		else {
+//			if(a.num > b.num) return false;
+//			else return true;
+//		}
+//	}
+//}
+//
+//int main() {
+//	int n; cin >> n;
+//	for(int i = 1; i <= n; i++) {
+//		student[i].num = i;
+//		int c,m,e; cin >> c >> m >> e;
+//		student[i].c = c,student[i].m = m, student[i].e = e;
+//		student[i].sum = c + e + m; 
+//	}
+//	sort(student + 1, student + 1 + n, cmp);
+//	for(int i = 1; i <= 5; i++) {
+//		cout << student[i].num << " " << student[i].sum << endl;
+//	} 
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int n, m;
+//
+//struct employee {
+//	int num;
+//	int score;
+//}emp[5010];
+//
+//bool cmp(employee& a, employee& b) {
+//	if(a.score > b.score) return true;
+//	else if (a.score < b.score) return false;
+//	else {
+//		if(a.num < b.num) return true;
+//		else return false;
+//	}
+//}
+//
+//int main() {
+//	int x;
+//	cin >> n >> x;
+//	for(int i = 1; i <= n; i++) {
+//		cin >> emp[i].num >> emp[i].score;
+//	}
+//	sort(emp + 1, emp + 1 + n, cmp);
+//	m = emp[(int)(x * 1.5)].score;
+//	int j;// 被录取的人数
+//	for(int i = 1; i <= n; i++) {
+//		if(emp[i].score >= m){
+//			j++;
+//		}
+//		else break;
+//	} 
+//	cout << m << " " << j << endl;
+//	for(int i = 1; i <= m + 1; i++) {
+//		cout << emp[i].num << " " << emp[i].score << endl;
+//	}
+//	return 0;
+//} 
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 110, M = 110;
+//
+//int n, m;
+//char a[N][M];
+//
+//int main() {
+//	cin >> n >> m;
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 1; j <= m; j++) {
+//			cin >> a[i][j];
+//			if(a[i][j] == '*') a[i][j] = '1';
+//			else a[i][j] = '0';
+//		}
+//	}
+//	
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 1; j <= m; j++) {
+//			int cnt = 0;
+//			if(a[i][j] == '1') cout << '*';
+//			else {
+//				a[i][j] = (a[i-1][j-1] + a[i-1][j] + a[i-1][j+1] + a[i][j-1] + a[i][j+1] + a[i+1][j-1] + a[i+1][j] + a[i+1][j+1]); 
+//				cout << a[i][j];
+//			}
+//		}
+//		cout << endl;
+//	}
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int n, x;
+//
+//int main() {
+//	cin >> n >> x;
+//	int cnt = 0;
+//	for(int i = 1; i <= n; i++) {
+//		int b = i;
+//		while(b) {
+//			if(b % 10 == x) cnt++;
+//			b /= 10;
+//		}
+//	}
+//	cout << cnt << endl ;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int n;
+//int a[1010];
+//
+//int main() {
+//	cin >> n;
+//	for(int i = 1; i <= n; i++) cin >> a[i];
+//	sort(a + 1, a + 1 + n);
+//	cout << a[1] << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//float n;
+//
+//int main() {
+//	cin >> n;
+//	float s = 0.0;
+//	float b = 2.0;
+//	int cnt = 0;
+//	while(s <= n) {
+//		cnt++;
+//		b *= 0.98;
+//		s += b;
+//	}
+//	cout << cnt << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int h;
+//int a[20];
+//
+//int main() {
+//	for(int i = 1; i <= 10; i++) cin >> a[i];
+//	cin >> h;
+//	int cnt = 0;
+//	for(int i = 1; i <= 10; i++) {
+//		if(a[i] <= h) cnt++;
+//		else {
+//			if(a[i] <= h + 30) cnt++;
+//		}
+//	}
+//	cout << cnt << endl; 
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 5010;
+//
+//int n,s,a,b;
+//int x[N], y[N];
+//int f[N][N];
+//
+//int main() {
+//	cin >> n >> s >> a >> b;
+//	for(int i = 1; i <= n; i++) cin >> x[i] >> y[i];
+//	
+//	// 动态规划
+//	// f[i][j]表示[1,i]区间内摘苹果，在满足力气不小于j的情况下能摘到的最多的苹果数
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 0; j <= s; j++) {
+//			f[i][j] = f[i - 1][j];
+//			if(j <= s) f[i][j] = max(f[i][j], f[i - 1][s - j] + )
+//		}
+//	} 
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 5010;
+//
+//int n,s,a,b;
+//int x[N],y[N];
+//int c[N];
+//
+//int main() {
+//	cin >> n >> s >> a >> b;
+//	for(int i = 1; i <= n; i++) {
+//		cin >> x[i] >> y[i];
+//		if(x[i] <= b) c[i] = y[i];
+//		else {
+//			if(x[i] <= b + a) c[i] = y[i];
+//			else c[i] = 0x3f;
+//		}
+//	}
+//	sort(c + 1, c + 1 + n);
+//	int cnt = 0;
+//	for(int i = 1; i <= n; i++) {
+//		if(s >= c[i]) {
+//			cnt++;
+//			s -= c[i];
+//		}else{
+//			break;
+//		}
+//	}
+//	cout << cnt << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//typedef long long LL;
+//
+//LL x,y,z;
+//
+//LL gcd(LL a, LL b) {
+//	if(!b) return a;// 如果b为零，那么最大公约数就是a
+//	return gcd(b, a % b); 
+//}
+//
+//int main() {
+//	cin >> x >> y >> z;
+//	LL t = gcd(x,y);
+//	cout << gcd(t,z) << endl;
+//	return 0;
+//}
+
 #include <bits/stdc++.h>
 using namespace std;
-const int N = 110, MOD = 1e6 + 7;
 
-int n,m;
-int a[N];
-int f[N][N];
+string a;
+int b;
+
+int gcd(int a, int b) {
+	return b == 0 ? a : gcd(b, a % b);
+}
+
+int calc() {
+	long long t = 0;
+	for(auto ch : a) {
+		t = t * 10 + (ch - '0');
+		t %= b;
+	}
+	return t;
+}
 
 int main() {
-	cin >> n >> m;
-	for(int i = 1; i <= n; i++) cin >> a[i];
-	
-	f[0][0] = 1;
-	for(int i = 1; i <= n; i++) {
-		for(int j = m; j > 0; j--) {
-			for(int k = 0; k <= a[i] && k <= j; k++) {
-				f[i][j] = (f[i][j] + f[i - 1][j - k]) % MOD;
-			}
-		}
-	}
-	 cout << f[n][m] << endl;
+	cin >> a >> b;
+	cout << gcd(calc(),b) << endl;
 	return 0;
 }
