@@ -3748,3 +3748,184 @@
 //	}
 //	return 0;
 //}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 110;
+//
+//int n;
+//int a[N];
+//
+//int main() {
+//	cin >> n;
+//	int x = 0;
+//	for(int i = 1; i <= n; i++) {
+//		cin >> a[i];
+//		x += a[i];
+//	}
+//	x /= n;
+//	
+//	int ret = 0;
+//	for(int i = 1; i <= n; i++) {
+//		if(a[i] == x) continue;
+//		ret++;
+//		a[i + 1] -= x - a[i];
+//	}
+//	cout << ret << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//typedef long long LL;
+//
+//LL a,b;
+//
+//int main() {
+//	cin >> a >> b;
+//	LL x = pow(a,b);
+//	if(x > 1e9 || x < 0) cout << -1 << endl;
+//	else cout << x << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 1e3 + 10;
+//
+//int n,m,c;
+//int a[N][N];
+//
+//int main() {
+//	cin >> n >> m >> c;
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 1; j <= m; i++) {
+//			cin >> a[i][j];
+//		}
+//	}
+//	
+//	int max = -1;
+//	int tmp = 0;
+//	int rx,ry = 0;
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 1; j <= m; j++) {
+//			int tx , ty = 0;
+//			for(int x = 1; x <= c; x++) {
+//				for(int y = 1; y <= c; y++) {
+//					tx = x, ty = y;
+//					tmp += a[i][j];
+//				}
+//			}
+//			if(tmp > max) {
+//				rx = tx,ry = ty;
+//			}
+//		}
+//	}
+//	cout << rx << " " << ry << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//typedef long long LL;
+//
+//const int N = 1e3 + 10;
+//
+//int n,m,c;
+//LL f[N][N];
+//
+//int main() {
+//	cin >> n >> m >> c;
+//	// 二维前缀和 
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 1; j <= m; j++) {
+//			int x; cin >> x;
+//			f[i][j] = f[i - 1][j] + f[i][j - 1] - f[i - 1][j - 1] + x;
+//		}
+//	}
+//	
+//	// 枚举所有边长为c的正方形
+//	LL ret = -1e18;
+//	int x,y = 0;
+//	for(int x1 = 1; x1 <= n - c + 1; x1++) {
+//		for(int y1 = 1; y1 <= m - c + 1; y1++) {
+//			int x2 = x1 + c -1, y2 = y1 + c - 1;
+//			LL t = f[x2][y2] - f[x1 - 1][y2] - f[x2][y1 - 1] + f[x1 - 1][y1 - 1];
+//			if(t > ret) {
+//				ret = t;
+//				x = x1,y = y1;
+//			}
+//		}
+//	}
+//	cout << x << " " << y << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 10, M = 1010;
+//
+//int n = 6, m = 1000;
+//int w[N] = {0,1,2,3,5,10,20};
+//int a[N];
+//int f[N][M];
+//
+//int main() {
+//	for(int i = 1; i <= n; i++) cin >> a[i];
+//	
+//	// 动态规划
+//	// f[i][j]表示前i个砝码中是否能凑成总重为j,是true或者false 
+//	f[0][0] = true;
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = m; j >= 0; j--) {
+//			for(int k = 0; k <= a[i] && k * w[i] <= j; k++) {
+//				f[i][j] = f[i - 1][j] || f[i - 1][j - k * w[i]];
+//			}
+//		}
+//	}
+//	
+//	int ret = 0;
+//	for(int i = 1; i <= m; i++) {
+//		if(f[6][i] != 0) ret++;
+//	}
+//	cout << "Total=" << ret << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int n,k;
+//
+//int main() {
+//	cin >> n >> k;
+//	cout << k - (n % k) << endl;
+//	return 0;
+//}
+
+#include <bits/stdc++.h>
+using namespace std;
+const int N = 1e5 + 10;
+
+int n;
+int a[N],b[N],g[N],k[N];
+int x,y;
+
+int find() {
+	for(int i = n; i >= 1; i--) {
+		if(a[i] <= x && g[i] + a[i] >= x && b[i] <= y && k[i] + b[i] >= y) return i;
+	}
+	return -1;
+}
+
+int main() {
+	cin >> n;
+	for(int i = 1; i <= n; i++) cin >> a[i] >> b[i] >> g[i] >> k[i];
+	cin >> x >> y;
+	
+	cout << find() << endl; 
+	return 0;
+}
