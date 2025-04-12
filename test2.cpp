@@ -3906,26 +3906,566 @@
 //	return 0;
 //}
 
-#include <bits/stdc++.h>
-using namespace std;
-const int N = 1e5 + 10;
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 1e5 + 10;
+//
+//int n;
+//int a[N],b[N],g[N],k[N];
+//int x,y;
+//
+//int find() {
+//	for(int i = n; i >= 1; i--) {
+//		if(a[i] <= x && g[i] + a[i] >= x && b[i] <= y && k[i] + b[i] >= y) return i;
+//	}
+//	return -1;
+//}
+//
+//int main() {
+//	cin >> n;
+//	for(int i = 1; i <= n; i++) cin >> a[i] >> b[i] >> g[i] >> k[i];
+//	cin >> x >> y;
+//	
+//	cout << find() << endl; 
+//	return 0;
+//}
 
-int n;
-int a[N],b[N],g[N],k[N];
-int x,y;
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int x1,x2;
+//
+//bool t(int x) {
+//	x = pow(x,3);
+//	x1 = x;
+//	int cnt = 0;
+//	while(x) {
+//		cnt++;
+//		x /= 10;
+//	}
+//	if(cnt == 4) return true;
+//	else return false;
+//}
+//
+//bool f(int x) {
+//	x = pow(x,4);
+//	x2 = x;
+//	int cnt = 0;
+//	while(x) {
+//		cnt++;
+//		x /= 10;
+//	}
+//	if(cnt == 6) return true;
+//	else return false;
+//}
+//
+//bool m(int x, int y) {
+//	int a[10] = {0};
+//	while(x) {
+//		a[x % 10] = 1;
+//		x /= 10;
+//	}
+//	while(y) {
+//		a[y % 10] = 1;
+//		y /= 10;
+//	}
+//	for(int i = 0; i <= 9; i++) {
+//		if(a[i] != 1) return false;
+//	}
+//	return true;
+//}
+//
+//int main() {
+//	for(int i = 10; i <= 30; i++) {
+//		if(t(i)) {
+//			if(f(i)) {
+//				if(m(x1, x2)) {
+//					cout << i << endl;
+//				}
+//			}
+//		}
+//	}
+//	return 0;
+//}
 
-int find() {
-	for(int i = n; i >= 1; i--) {
-		if(a[i] <= x && g[i] + a[i] >= x && b[i] <= y && k[i] + b[i] >= y) return i;
-	}
-	return -1;
-}
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//bool f(int x, int y) {
+//	int a = x * y;
+//	int b = x + y;
+//	if(a / b == 6 && a % b == 0) return true;
+//	else return false;
+//}
+//
+//bool a(int x, int y) {
+//	if(abs(x - y) <= 8) return true;
+//	else return false;
+//}
+//
+//int main() {
+//	for(int i = 1; i <= 50; i++) {
+//		for(int j = 1; j <= 50; j++) {
+//			if(f(i,j)) {
+//				if(a(i,j)) {
+//					int x = i < j ? i : j;
+//					cout << x << endl;
+//				}
+//			}
+//		}
+//	}
+//	return 0;
+//}
 
-int main() {
-	cin >> n;
-	for(int i = 1; i <= n; i++) cin >> a[i] >> b[i] >> g[i] >> k[i];
-	cin >> x >> y;
-	
-	cout << find() << endl; 
-	return 0;
-}
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int count(int x) {
+//	int cnt = 0;
+//	while(x) {
+//		if(x % 10 == 2) {
+//			cnt++;
+//		}
+//		x /= 10;
+//	}
+//	return cnt;
+//}
+//
+//int main() {
+//	int ret = 0;
+//	for(int i = 1; i <= 2020; i++) {
+//		ret += count(i);
+//	}
+//	cout << ret << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int main() {
+//	int a[] = {1,2,1,3,2};
+//	for(int i = 1; i < 5; i++) 
+//	{
+//		a[0] ^= a[i];
+//	} 
+//	cout << a[0] << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//typedef long long LL;
+//
+//int main() {
+//	LL ret = 0;
+//	for(int i = 1; i <= 20230408; i++) {
+//		ret += i;
+//	}
+//	cout << ret << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//string s = "5686916124919823647759503875815861830379270588570991944686338516346707827689565614010094809128502533";
+//
+//int main() {
+//	string ret;
+//	int cnt = 0;
+//	for(int i = 0; i < s.size(); i++) {
+//		if(s[i] == '2') ret.push_back(s[i]);
+//		for(int j = i; j < s.size(); j++) {
+//			if(s[j] == '0') ret.push_back(s[j]);
+//			for(int k = j; k < s.size(); k++) {
+//				if(s[k] == '2') ret.push_back(s[k]);
+//				for(int l = k; l < s.size(); l++) {
+//					if(s[l] == '3') ret.push_back(s[l]);
+//					for(int m = l; m < s.size(); m++) {
+//						if(s[m] == '0' && (s[m + 1] == '1' || s[m + 1] == '2' || s[m + 1] == '3' || s[m + 1] == '4' || s[m + 1] == '5' || s[m + 1] == '6' || s[m + 1] == '7' || s[m + 1] == '8' || s[m + 1] == '9')){
+//							ret.push_back(s[m]);
+//							ret.push_back(s[m + 1]);
+//						}
+//						else if(s[m] == '1' && (s[m + 1] == '0' || s[m + 1] == '1' || s[m + 1] == '2')) {
+//							ret.push_back(s[m]);
+//							ret.push_back(s[m + 1]);
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//	cout << ret << endl;
+//	return 0;
+//}
+
+//#include <stdio.h>
+//#include <string.h>
+// 
+//int main() {
+//    char array[] = "5686916124919823647759503875815861830379270588570991944686338516346707827689565614010094809128502533";
+//    int arraySize = strlen(array);
+//    char date[9];  // 存储提取的8位子序列
+//    int uniqueDates = 0;  // 记录不同日期数量
+// 
+//    for (int i = 0; i <= arraySize - 8; ++i) {
+//        // 提取8位子序列
+//        strncpy(date, array + i, 8);
+//        date[8] = '\0';  // 添加字符串结束符
+// 
+//        // 解析日期
+//        int year, month, day;
+//        sscanf(date, "%4d%2d%2d", &year, &month, &day);
+// 
+//        // 检查是否为2023年的合法日期
+//        if (year == 2023 && month >= 1 && month <= 12 && day >= 1 && day <= 31) {
+//            // 记录合法日期，并避免重复计数
+//            uniqueDates++;
+//            i += 7;  // 移动到下一个可能的子序列的起始位置
+//        }
+//    }
+// 
+//    // 输出结果
+//    printf("满足条件的不同日期数量为：%d\n", uniqueDates);
+// 
+//    return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//string s = "5686916124919823647759503875815861830379270588570991944686338516346707827689565614010094809128502533";
+//
+//int main() {
+//	int cnt = 0;
+//	string ret;
+//	for(int i = 0; i < s.size(); i++) {// 2
+//		for(int j = i; j < s.size(); j++) {// 0
+//			for(int k = j; k < s.size(); k++) {// 2
+//				for(int l = k; l < s.size(); l++) {// 3
+//					for(int m = l; m < s.size(); m++) {// 0
+//						for(int n = m; n < s.size(); n++) {// 2
+//							for(int o = n; o < s.size(); o++) {// 0
+//								for(int p = o; p < s.size(); p++) {// 4
+//									if(s[i] == '2' && s[j] == '0' && s[k] == '2' && s[l] == '3') {
+//										ret.push_back(s[i]);
+//										ret.push_back(s[j]);
+//										ret.push_back(s[k]);
+//										ret.push_back(s[l]);
+//										if(s[m] == '0' && (s[n] == '1' || s[n] == '2' || s[n] == '3' || s[n] == '4' || s[n] == '5' || s[n] == '6' || s[n] == '7' || s[n] == '8' || s[n] == '9')) {
+//											ret.push_back(s[m]);
+//											ret.push_back(s[n]);
+//											if(s[o] == '0' && (s[p] == '1' || s[p] == '2' || s[p] == '3' || s[p] == '4' || s[p] == '5' || s[p] == '6' || s[p] == '7' || s[p] == '8' || s[p] == '9')){
+//												ret.push_back(s[o]);
+//												ret.push_back(s[p]);
+//												cnt++;
+//											}
+//											else if(s[o] == '1' && (s[p] == '1' || s[p] == '2' || s[p] == '3' || s[p] == '4' || s[p] == '5' || s[p] == '6' || s[p] == '7' || s[p] == '8' || s[p] == '9')) {
+//												ret.push_back(s[o]);
+//												ret.push_back(s[p]);
+//												cnt++;
+//											}
+//											else if(s[o] == '2' && (s[p] == '1' || s[p] == '2' || s[p] == '3' || s[p] == '4' || s[p] == '5' || s[p] == '6' || s[p] == '7' || s[p] == '8')) {
+//												ret.push_back(s[o]);
+//												ret.push_back(s[p]);
+//												cnt++;
+//											}
+//											else if(s[o] == '3' && s[p] == '1') {
+//												ret.push_back(s[o]);
+//												ret.push_back(s[p]);
+//												cnt++;
+//											}
+//										}
+//										else if(s[m] == '1' && (s[n] == '0' || s[n] == '1' || s[n] == '2')){
+//											ret.push_back(s[m]);
+//											ret.push_back(s[n]);
+//											if(s[m] == '0' && (s[n] == '1' || s[n] == '2' || s[n] == '3' || s[n] == '4' || s[n] == '5' || s[n] == '6' || s[n] == '7' || s[n] == '8' || s[n] == '9')) {
+//											ret.push_back(s[m]);
+//											ret.push_back(s[n]);
+//											if(s[o] == '0' && (s[p] == '1' || s[p] == '2' || s[p] == '3' || s[p] == '4' || s[p] == '5' || s[p] == '6' || s[p] == '7' || s[p] == '8' || s[p] == '9')){
+//												ret.push_back(s[o]);
+//												ret.push_back(s[p]);
+//												cnt++;
+//											}
+//											else if(s[o] == '1' && (s[p] == '1' || s[p] == '2' || s[p] == '3' || s[p] == '4' || s[p] == '5' || s[p] == '6' || s[p] == '7' || s[p] == '8' || s[p] == '9')) {
+//												ret.push_back(s[o]);
+//												ret.push_back(s[p]);
+//												cnt++;
+//											}
+//											else if(s[o] == '2' && (s[p] == '1' || s[p] == '2' || s[p] == '3' || s[p] == '4' || s[p] == '5' || s[p] == '6' || s[p] == '7' || s[p] == '8')) {
+//												ret.push_back(s[o]);
+//												ret.push_back(s[p]);
+//												cnt++;
+//											}
+//											else if(s[o] == '3' && s[p] == '1') {
+//												ret.push_back(s[o]);
+//												ret.push_back(s[p]);
+//												cnt++;
+//											}
+//										}
+//										}
+//									}
+//								}
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//	cout << cnt << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int n,sum;
+//int a[4] = {2,0,1,9};
+//
+//bool b(int x) {
+//	for(int i = 0; i < 4; i++) {
+//		if(x == a[i]) return true;
+//	}
+//	return false;
+//}
+//
+//bool f(int x){
+//	while(x) {
+//		if(b(x % 10)) return true;
+//		x /= 10;
+//	}
+//	return false;
+//}
+//
+//int main() {
+//	cin >> n;
+//	for(int i = 1; i <= n; i++) {
+//		if(f(i)) sum += i;
+//	}
+//	cout << sum << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//typedef long long LL;
+//
+//LL n = 2021041820210418;
+//LL cnt;
+//
+//int main() {
+//	for(LL i = 1; i <= n; i++) {
+//		for(LL j = 1; j <= n; j++) {
+//			for(LL k = 1; k <= n; k++) {
+//				if(i * j * k == n) cnt++;
+//			}
+//		}
+//	}
+//	cout << cnt << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 1010;
+//
+//string s,t;
+//int f[N][N];
+//
+//int main() {
+//	cin >> s >> t;
+//	
+//	// 动态规划
+//	// f[i][j] 表示s的前i个字母包含t中前j个字符需要修改的最少次数
+//	memset(f, 0x3f, sizeof f);
+//	for(int i = 1; i <= t.size(); i++) f[i][0] = 0;
+//	f[0][0] = 0; 
+//	for(int i = 1; i <= s.size(); i++) {
+//		for(int j = 1; j <= t.size(); j++) {
+//			f[i][j] = min(f[i][j], f[i - 1][j]);
+//			if(s[i] == t[i]) f[i][j] = min(f[i][j], f[i - 1][j - 1]);
+//			else f[i][j] = min(f[i][j], f[i - 1][j - 1] + 1);
+//		}
+//	}
+//	cout << f[s.size()][t.size()] << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 1010;
+//
+//int n, k;
+//int m[N];
+//
+//int main() {
+//	cin >> n >> k;
+//	for(int i = 1; i <= n; i++) cin >> m[i];
+//	int sum = 0;
+//	for(int i = n; i >= 1; i--) {
+//		int cnt = k / m[i];
+//		sum += cnt;
+//		k -= cnt * m[i];
+//		if(k == 0) {
+//			cout << sum << endl;
+//			break;
+//		}
+//	}
+//	if(k != 0) cout << -1 << endl;
+//	return 0;
+//} 
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int n;
+//
+//bool good(int x) {
+//	int i = 1;
+//	int flag = 0;
+//	while(x) {
+//		if(x % 2 == i % 2) flag = 1;
+//		else {
+//			flag = 0;
+//			break;
+//		}
+//		x /= 10;
+//		i++;
+//	}
+//	if(flag == 1) return true;
+//	else return false;
+//}
+//
+//int main() {
+//	cin >> n;
+//	int cnt = 0;
+//	for(int i = 1; i <= n; i++) {
+//		if(good(i)) cnt++;
+//	}
+//	cout << cnt << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//int a,b;
+//
+//int gcd(int a, int b) {
+//	return b ==0 ? a : gcd(b, a % b);
+//}
+//
+//int lcm(int a, int b) {
+//	return a * b / gcd(a,b);
+//}
+//
+//int main() {
+//	cin >> a >> b;
+//	cout << gcd(a,b) << " " << lcm(a,b) << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 1e5 + 10;
+//
+//int n;
+//int a[N];
+//
+//int main() {
+//	cin >> n;
+//	for(int i = 1; i <= n; i++) {
+//		int x; cin >> x;
+//		a[i] = a[i - 1] + x;
+//	}
+//	int mins = 0x3f3f3f;
+//	// 前缀和
+//	for(int l1 = 1; l1 <= n; l1++) {
+//		for(int r1 = l1; r1 <= n; r1++) {
+//			int s1 = a[r1] - a[l1 - 1];
+//			for(int l2 = r1 + 1; l2 <= n; l2++) {
+//				for(int r2 = l2; r2 <= n; r2++) {
+//					int s2 = a[r2] - a[l2 - 1];
+//					mins = min(mins,abs(s1 - s2));
+//				}
+//			} 
+//		}
+//	} 
+//	cout << mins << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 1e5 + 10;
+//
+//int n, l, r;
+//int a[N];
+//
+//int main() {
+//	cin >> n >> l >> r;
+//	for(int i = 1; i <= n; i++) {
+//		int x; cin >> x;
+//		a[i] = a[i - 1] + x;
+//	}
+//	
+//	cout << a[r] - a[l - 1] << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//
+//const int N = 1e4 + 10;
+//
+//int n, m;
+//int f[N][N];
+//int a[N][N];
+//
+//int main() {
+//	cin >> n >> m;
+//	for(int i = 1; i <= n; i++) {
+//		for(int j = 1; j <= m; j++) {
+//			cin >> a[i][j];
+//			f[i][j] = f[i - 1][j] + f[i][j - 1] - f[i - 1][j - 1] + a[i][j]; 
+//		}
+//	}
+//	
+//	int x1,y1,x2,y2; cin >> x1 >> y1 >> x2 >> y2;
+//	cout << f[x2][y2] - f[x1 - 1][y2] - f[x2][y1 - 1] + f[x1 - 1][y1 - 1] << endl;
+//	return 0;
+//}
+
+//#include <bits/stdc++.h>
+//using namespace std;
+//const int N = 1010;
+//
+//int n, k, l, r;
+//int a[N];
+//int f[N];
+//
+//int main() {
+//	cin >> n;
+//	for(int i = 1; i <= n; i++) {
+//		cin >> a[i];
+//		f[i] = a[i] - a[i - 1];
+//	}
+//	
+//	cin >> l >> r;
+//	f[l] += k, f[r + 1] -= k;
+//	
+//	// 利用前缀和还原差分数组
+//	for(int i = 1; i <= n; i++) {
+//		f[i] = f[i - 1] + f[i];
+//	} 
+//	
+//	// 输出处理后的数组
+//	for(int i = 1; i <= n; i++) {
+//		cout << f[i] << " ";
+//	} 
+//	return 0;
+//}
